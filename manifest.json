@@ -1,0 +1,9 @@
+{
+  "domain": "ogb_exhaust",
+  "name": "OpenGrowBox-Exhausts",
+  "version": "1.0.0",
+  "config_flow": true,
+  "requirements": ["aiohttp"],
+  "dependencies": [],
+  "codeowners": ["@IhrGitHubBenutzername"]
+}
