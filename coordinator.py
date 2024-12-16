@@ -1,6 +1,8 @@
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 import logging
 import aiohttp
+from datetime import timedelta
+
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -13,7 +15,7 @@ class PwmFansCoordinator(DataUpdateCoordinator):
             hass,
             _LOGGER,
             name="PWM Fans",
-            update_interval=None,
+            update_interval=timedelta(seconds=10),
         )
         self.api_url = entry.data["api_url"]
 

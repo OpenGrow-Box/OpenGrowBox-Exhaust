@@ -1,6 +1,8 @@
 from homeassistant.components.fan import FanEntity, FanEntityFeature
 from .const import DOMAIN
+import logging
 
+_LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up PWM fan entities from a config entry."""
@@ -53,18 +55,26 @@ class PwmFanEntity(FanEntity):
             "manufacturer": "OpenGrowBox",
         }
 
-    async def async_turn_on(self, percentage=None, **kwargs):
+    async def async_turn_on(self, percentage=None, preset_mode=None, **kwargs):
         """Turn on the fan."""
-        if percentage is None:
-            percentage = self.percentage  # Default to current percentage if not set
-        self._is_on = True
-        await self._controller.start_fan()
-        await self._controller.set_pwm(percentage)
+        try:
+            if percentage is None:
+                percentage = self.percentage  # Default to current percentage if not set
+            self._is_on = True
+            # Erst den Lüfter starten
+            await self._controller.start_fan()
+            # Danach die PWM-Werte setzen
+            await self._controller.set_pwm(percentage)
+            self.async_write_ha_state()
+        except RuntimeError as e:
+            _LOGGER.error(f"Failed to turn on fan: {e}")
+            self._is_on = False
 
     async def async_turn_off(self, **kwargs):
         """Turn off the fan."""
         self._is_on = False
         await self._controller.stop_fan()
+        self.async_write_ha_state()
 
     async def async_set_percentage(self, percentage: int):
         """Set the fan's speed percentage."""
