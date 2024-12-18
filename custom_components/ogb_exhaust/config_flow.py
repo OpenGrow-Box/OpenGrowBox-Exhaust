@@ -1,6 +1,6 @@
 from homeassistant import config_entries
 import voluptuous as vol
-from .const import DOMAIN
+from custom_components.ogb_exhaust.const import DOMAIN
 
 class PwmFansConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for PWM Fans."""

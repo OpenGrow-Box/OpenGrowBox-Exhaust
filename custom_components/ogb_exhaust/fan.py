@@ -1,5 +1,5 @@
 from homeassistant.components.fan import FanEntity, FanEntityFeature
-from .const import DOMAIN
+from custom_components.ogb_exhaust.const import DOMAIN
 import logging
 
 _LOGGER = logging.getLogger(__name__)

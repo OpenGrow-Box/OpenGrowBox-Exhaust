@@ -1,5 +1,5 @@
 from homeassistant.helpers.entity import Entity
-from .const import DOMAIN
+from custom_components.ogb_exhaust.const import DOMAIN
 
 
 async def async_setup_entry(hass, config_entry, async_add_entities):

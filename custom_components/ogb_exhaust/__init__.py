@@ -1,8 +1,8 @@
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from .const import DOMAIN
-from .coordinator import PwmFansCoordinator
-from .controller import ApiFanController
+from custom_components.ogb_exhaust.coordinator import PwmFansCoordinator
+from custom_components.ogb_exhaust.controller import ApiFanController
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
