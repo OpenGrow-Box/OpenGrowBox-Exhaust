@@ -1,0 +1,7 @@
+{
+  "name": "ogb_exhaust",
+  "content_in_root": false,
+  "domains": ["ogb_exhaust"],
+  "homeassistant": "2024.10.1",
+  "country": "DE"
+}
