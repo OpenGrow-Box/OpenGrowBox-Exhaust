@@ -1,6 +1,6 @@
 {
   "domain": "ogb_exhaust",
-  "name": "OpenGrowBox-Exhausts",
+  "name": "ogb_exhaust",
   "version": "1.0.0",
   "config_flow": true,
   "requirements": ["aiohttp"],
